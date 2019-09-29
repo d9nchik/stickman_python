@@ -15,11 +15,22 @@ class Game:
         self.canvas_height = 500
         self.canvas_width = 500
         self.bg = PhotoImage(file="background.gif")
+        self.bg1 = PhotoImage(file="background1.gif")
+        self.bg2 = PhotoImage(file="lamp.gif")
+        self.bg3 = PhotoImage(file="bookshelf.gif")
         w = self.bg.width()
         h = self.bg.height()
         for x in range(0, 5):
             for y in range(0, 5):
-                self.canvas.create_image(x * w, y * h, image=self.bg, anchor='nw')
+                if ((x + y) % 4) == 0:
+                    self.canvas.create_image(x * w, y * h, image=self.bg, anchor='nw')
+                elif ((x + y) % 4) == 1:
+                    self.canvas.create_image(x * w, y * h, image=self.bg1, anchor='nw')
+                elif ((x + y) % 4) == 2:
+                    self.canvas.create_image(x * w, y * h, image=self.bg2, anchor='nw')
+                else:
+                    self.canvas.create_image(x * w, y * h, image=self.bg3, anchor='nw')
+
         self.sprites = []
         self.running = True
 
